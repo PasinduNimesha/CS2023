@@ -29,14 +29,7 @@ heap max_heapify(heap A, int i){
     if(r >= A.size || l >= A.size){
         return A;
     }
-    // if(largest == 0){
-    //     if(A.a[l] >= A.a[r]){
-    //         largest = 1;
-    //     }
-    //     else{
-    //         largest = 2;
-    //     }
-    // }
+
     return max_heapify(A, largest);
 
 }
@@ -62,7 +55,7 @@ int main(){
     heap heap1;
     heap1.a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
     heap1.length = 15;
-    heap1.size = 10;
+    heap1.size = heap1.a.size();
 
     heap heapified = buildMaxHeap(heap1);
     // heap heapified = max_heapify(heap1, 4);
@@ -71,19 +64,6 @@ int main(){
         cout<< heapified.a[i]<<" ";
     }
     cout<<endl;
-    // heapified = max_heapify(heapified, 2);
-    // for(int i = 0; i < heap1.a.size(); i++){
-    //     cout<< heapified.a[i]<<" ";
-    // }
-    // cout<<endl;
-    // heapified = max_heapify(heapified, 1);
-    // for(int i = 0; i < heap1.a.size(); i++){
-    //     cout<< heapified.a[i]<<" ";
-    // }
-    // cout<<endl;
-    // heapified = max_heapify(heapified, 0);
-    // for(int i = 0; i < heap1.a.size(); i++){
-    //     cout<< heapified.a[i]<<" ";
-    // }
+
     return 0;
 }
