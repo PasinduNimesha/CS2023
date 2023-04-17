@@ -35,7 +35,7 @@ heap max_heapify(heap A, int i){
 }
 
 heap buildMaxHeap(heap a){
-    int i = a.size/2 -1;
+    int i = (a.size/2) -1;
     for(i; i >= 0; i-- ){
         a = max_heapify(a, i);
         for(int j = 0; j < a.a.size(); j++){
@@ -53,7 +53,7 @@ heap buildMaxHeap(heap a){
 int main(){
 
     heap heap1;
-    heap1.a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
+    heap1.a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 17, 0};
     heap1.length = 15;
     heap1.size = heap1.a.size();
 
