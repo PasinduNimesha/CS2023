@@ -12,13 +12,13 @@ heap max_heapify(heap A, int i){
     int l = i*2+1;
     int r = i*2+2;
     int largest, temp;
-    if(l <= A.size && A.a[l] > A.a[i]){
+    if(l < A.size && A.a[l] > A.a[i]){
         largest = l;
     }
     else{
         largest = i;
     }
-    if(r <= A.size && A.a[r] > A.a[largest]){
+    if(r < A.size && A.a[r] > A.a[largest]){
         largest = r;
     }
     if(largest != i){
@@ -26,7 +26,7 @@ heap max_heapify(heap A, int i){
         A.a[i] = A.a[largest];
         A.a[largest] = temp;
     }
-    if(r > A.size){
+    if(r >= A.size || l >= A.size){
         return A;
     }
     // if(largest == 0){
@@ -42,19 +42,16 @@ heap max_heapify(heap A, int i){
 }
 
 heap buildMaxHeap(heap a){
-    int i = a.size/2 - 2;
-    heap heapified = a;
+    int i = a.size/2 -1;
     for(i; i >= 0; i-- ){
-        heapified = max_heapify(heapified, i);
-    //     a = heapified;
-    //     for(int j = 0; j < a.a.size(); j++){
-    //     cout<< a.a[j]<<" ";
-    //     }
-    //     cout<<endl;
-        cout<<i<<" ";
+        a = max_heapify(a, i);
+        for(int j = 0; j < a.a.size(); j++){
+        cout<< a.a[j]<<" ";
+        }
+        cout<<endl;
+        
     }
-    cout<<endl;
-    return heapified;
+    return a;
 
 }
 
@@ -67,13 +64,13 @@ int main(){
     heap1.length = 15;
     heap1.size = 10;
 
-
     heap heapified = buildMaxHeap(heap1);
+    // heap heapified = max_heapify(heap1, 4);
 
-    // for(int i = 0; i < heap1.a.size(); i++){
-    //     cout<< heapified.a[i]<<" ";
-    // }
-    // cout<<endl;
+    for(int i = 0; i < heap1.a.size(); i++){
+        cout<< heapified.a[i]<<" ";
+    }
+    cout<<endl;
     // heapified = max_heapify(heapified, 2);
     // for(int i = 0; i < heap1.a.size(); i++){
     //     cout<< heapified.a[i]<<" ";
@@ -85,8 +82,8 @@ int main(){
     // }
     // cout<<endl;
     // heapified = max_heapify(heapified, 0);
-    for(int i = 0; i < heap1.a.size(); i++){
-        cout<< heapified.a[i]<<" ";
-    }
+    // for(int i = 0; i < heap1.a.size(); i++){
+    //     cout<< heapified.a[i]<<" ";
+    // }
     return 0;
 }
