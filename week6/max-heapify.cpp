@@ -26,12 +26,12 @@ heap max_heapify(heap A, int i){
         A.a[i] = A.a[largest];
         A.a[largest] = temp;
     }
-    if(r >= A.size || l >= A.size){
+    if(r >= A.size || l >= A.size || largest == i){
         return A;
     }
-
-    return max_heapify(A, largest);
-
+    else{
+        return max_heapify(A, largest);
+    }
 }
 
 heap buildMaxHeap(heap a){
@@ -53,7 +53,7 @@ heap buildMaxHeap(heap a){
 int main(){
 
     heap heap1;
-    heap1.a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 17, 0};
+    heap1.a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 10, 0};
     heap1.length = 15;
     heap1.size = heap1.a.size();
 
