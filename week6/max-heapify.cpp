@@ -38,14 +38,26 @@ heap buildMaxHeap(heap a){
     int i = (a.size/2) -1;
     for(i; i >= 0; i-- ){
         a = max_heapify(a, i);
-        for(int j = 0; j < a.a.size(); j++){
-        cout<< a.a[j]<<" ";
-        }
-        cout<<endl;
-        
+        // for(int j = 0; j < a.a.size(); j++){
+        //     cout<< a.a[j]<<" ";
+        // }
+        // cout<<endl;
     }
     return a;
+}
 
+heap heapSort(heap A){
+    int size = A.size;
+    int i = A.size;
+    int temp;
+    for(int i = size -1; i >= 1; i--){
+        temp = A.a[i];
+        A.a[i] = A.a[0];
+        A.a[0] = temp;
+        A.size--;
+        A = max_heapify(A, 0);
+    }
+    return A;
 }
 
 
@@ -53,7 +65,7 @@ heap buildMaxHeap(heap a){
 int main(){
 
     heap heap1;
-    heap1.a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 10, 0};
+    heap1.a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 0, 11};
     heap1.length = 15;
     heap1.size = heap1.a.size();
 
@@ -64,6 +76,10 @@ int main(){
         cout<< heapified.a[i]<<" ";
     }
     cout<<endl;
+    heap sorted = heapSort(heapified);
+    for(int i = 0; i < heap1.a.size(); i++){
+        cout<< sorted.a[i]<<" ";
+    }
 
     return 0;
 }
