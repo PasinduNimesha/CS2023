@@ -65,12 +65,11 @@ heap heapSort(heap A){
 int main(){
 
     heap heap1;
-    heap1.a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 0, 11};
+    heap1.a = {0, 4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 0, 11, 100, 123, 1, 23, 54, 12,3, 432};
     heap1.length = 15;
     heap1.size = heap1.a.size();
 
     heap heapified = buildMaxHeap(heap1);
-    // heap heapified = max_heapify(heap1, 4);
 
     for(int i = 0; i < heap1.a.size(); i++){
         cout<< heapified.a[i]<<" ";
